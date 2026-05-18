@@ -1,0 +1,25 @@
+name: Docker build and push
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to GHCR
+        run: echo "${{ secrets.PAT }}" | docker login ghcr.io -u "${{ secrets.USERNAME }}" --password-stdin
+
+      - name: Build Docker image
+        run: docker build -t ghcr.io/4h1g4L0w4/free-claude-code:latest .
+
+      - name: Push Docker image
+        run: docker push ghcr.io4h1g4L0w4/free-claude-code:latest
