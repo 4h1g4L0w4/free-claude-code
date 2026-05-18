@@ -19,7 +19,7 @@ jobs:
         run: echo "${{ secrets.PAT }}" | docker login ghcr.io -u "${{ secrets.USERNAME }}" --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/4h1g4L0w4/free-claude-code:latest .
+        run: docker build -t ghcr.io/4h1g4l0w4/free-claude-code:latest .
 
       - name: Push Docker image
-        run: docker push ghcr.io4h1g4L0w4/free-claude-code:latest
+        run: docker push ghcr.io/4h1g4l0w4/free-claude-code:latest
